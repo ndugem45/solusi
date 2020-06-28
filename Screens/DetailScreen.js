@@ -4,9 +4,6 @@ import React, {
     useMemo
 } from 'react';
 import {
-    View,
-    Text,
-    Image,
     SafeAreaView,
     ScrollView,
     StatusBar
