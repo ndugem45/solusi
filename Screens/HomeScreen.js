@@ -19,6 +19,7 @@ import {
 } from 'react-native-responsive-screen';
 import LinearGradient from 'react-native-linear-gradient';
 import {NewsItem} from '../Components/NewsItem';
+import { SliderBox } from "react-native-image-slider-box";
 
 
 
@@ -27,6 +28,11 @@ export function HomeScreen({ navigation }) {
         'country=id&' +
         'apiKey=3bae720e656d422d91457850c84044f8';
     const [news, setNews] = useState([])
+    const images = [
+        require('../Assets/home_banner_slider.png'),
+        require('../Assets/home_banner_slider.png'),
+        require('../Assets/home_banner_slider.png'),
+      ];
     useEffect(() => {
         fetch(url)
         .then((response) => response.json())
@@ -144,10 +150,25 @@ export function HomeScreen({ navigation }) {
                 </View>
 
                 {/* slider banner wrapper*/}
-                <View style={{ backgroundColor: 'white', paddingVertical: wp('3.46'), paddingHorizontal: wp('4.53'), marginBottom: wp('6.13') }}>
-                    <Image source={require('../Assets/home_banner_slider.png')} style={{ height: wp('27.46'), width: '100%', marginBottom: wp('2.66'), borderRadius: wp('2.4') }} resizeMode='cover' />
-
-                    <View style={{ backgroundColor: 'blue', height: wp('1.86') }}></View>
+                <View style={{ height:wp('38.13'),backgroundColor: 'white', paddingVertical: wp('3.46'), paddingHorizontal: wp('4.53'), marginBottom: wp('6.13') }}>
+                    <SliderBox 
+                        images={images} 
+                        sliderBoxHeight={wp('27.46')} 
+                        dotColor="#0093DD"
+                        inactiveDotColor="#D6D6D6"
+                        resizeMethod={'resize'}
+                        resizeMode={'cover'}
+                        parentWidth={wp('91.2')}
+                        ImageComponentStyle={{borderRadius: wp('2.4'), width: '100%'}}
+                        paginationBoxStyle={{
+                            position: "absolute",
+                            bottom: -wp('4.53'),
+                            padding: 0,
+                            alignItems: "center",
+                            alignSelf: "center",
+                            justifyContent: "center",
+                            paddingVertical: 0
+                          }}/>
                 </View>
 
                 {news.map((s,i) => NewsItem(s[1],i,navigation))}
