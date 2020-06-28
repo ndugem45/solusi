@@ -10,15 +10,15 @@ import {
     SafeAreaView,
     TouchableOpacity,
     ScrollView,
-    TextInput
+    TextInput,
+    StatusBar
 } from 'react-native';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp
 } from 'react-native-responsive-screen';
 import LinearGradient from 'react-native-linear-gradient';
-
-
+import {NewsItem} from '../Components/NewsItem';
 
 
 
@@ -43,6 +43,7 @@ export function HomeScreen({ navigation }) {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
+            <StatusBar backgroundColor="white" barStyle='dark-content'/>
             <View style={{ paddingTop: wp('5.33'), paddingHorizontal: wp('4.53'), backgroundColor: 'white' }}>
                 {/* top wrapper */}
                 <View style={{ height: wp('6.13'), flexDirection: 'row' }}>
@@ -64,56 +65,92 @@ export function HomeScreen({ navigation }) {
             <ScrollView>
                 <View style={{ paddingHorizontal: wp('4.53'), backgroundColor: 'white', marginBottom: wp('6.13') }}>
                     {/* info graph */}
-                    <View style={{ backgroundColor: 'blue', height: wp('38.13'), marginBottom: wp('6.13'), borderRadius: wp('2.4') }}></View>
-                    {/* <LinearGradient colors={['#0C8CD8', '#0C8CD8', '#192f6a']} style={{ backgroundColor: 'blue', height: wp('38.13'), marginBottom: wp('6.13'),borderRadius:wp('2.4') }}>
-                        <Text style={{}}>
-                            Sign in with Facebook
+                    <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#0E8BD7', '#C81E84']} style={{ height: wp('38.13'), marginBottom: wp('6.13'),borderRadius:wp('2.4') }}>
+                        <Text style={{color:'white',paddingHorizontal:wp('6.13'),fontSize:wp('3.2'),height:wp('8.53'),textAlignVertical:'center',borderBottomColor:'white',borderBottomWidth:1,fontWeight:'bold'}}>
+                            INFO ANTRIAN
                         </Text>
-                    </LinearGradient> */}
+                        <View style={{flex:1,flexDirection:'row'}}>
+                            <View style={{flex:3}}></View>
+                            <View style={{flex:2,justifyContent:'center'}}>
+                                <Text style={{fontSize:wp('2.4'),marginBottom:wp('4'),color:'#FFF9AA'}}>
+                                    Dokter anda
+                                    {'\n'}
+                                    <Text style={{color:'white'}}>
+                                        dr. Rina Agustina
+                                    </Text>
+                                </Text>
+                                <Text style={{fontSize:wp('2.4'),color:'#FFF9AA'}}>
+                                    Klinik / RS anda
+                                    {'\n'}
+                                    <Text style={{color:'white'}}>
+                                        RS. National Hospital
+                                    </Text>
+                                </Text>
+                            </View>
+                        </View>
+                    </LinearGradient>
 
                     {/* menu */}
-                    <View style={{ backgroundColor: 'red', height: wp('46.66'), marginBottom: wp('6.93') }}></View>
+                    <View style={{ height: wp('46.66'), marginBottom: wp('6.93'),flexDirection:'row',justifyContent:'space-between',flexWrap:'wrap' }}>
+                        <View style={{alignItems:'center',width:'33%',height:'50%'}}>
+                            <TouchableOpacity>
+                                <Image source={require('../Assets/home_menu_1.png')} style={{width:wp('14.93'),height:wp('14.93'),marginBottom:wp('2')}} resizeMode='contain'/>
+                            </TouchableOpacity>
+                            <Text style={{fontSize:wp('2.6'),color:'#5a5a5a',fontWeight:'bold'}}>
+                                KLINIK TERDEKAT
+                            </Text>
+                        </View>
+                        <View style={{alignItems:'center',width:'33%',height:'50%'}}>
+                            <TouchableOpacity>
+                                <Image source={require('../Assets/home_menu_2.png')} style={{width:wp('14.93'),height:wp('14.93'),marginBottom:wp('2')}} resizeMode='contain'/>
+                            </TouchableOpacity>
+                            <Text style={{fontSize:wp('2.6'),color:'#5a5a5a',fontWeight:'bold'}}>
+                                RIWAYAT
+                            </Text>
+                        </View>
+                        <View style={{alignItems:'center',width:'33%',height:'50%'}}>
+                            <TouchableOpacity>
+                                <Image source={require('../Assets/home_menu_3.png')} style={{width:wp('14.93'),height:wp('14.93'),marginBottom:wp('2')}} resizeMode='contain'/>
+                            </TouchableOpacity>
+                            <Text style={{fontSize:wp('2.6'),color:'#5a5a5a',fontWeight:'bold'}}>
+                                DATA SCAN
+                            </Text>
+                        </View>
+                        <View style={{alignItems:'center',width:'33%',height:'50%'}}>
+                            <TouchableOpacity>
+                                <Image source={require('../Assets/home_menu_4.png')} style={{width:wp('14.93'),height:wp('14.93'),marginBottom:wp('2')}} resizeMode='contain'/>
+                            </TouchableOpacity>
+                            <Text style={{fontSize:wp('2.6'),color:'#5a5a5a',fontWeight:'bold'}}>
+                                NOTIFIKASI
+                            </Text>
+                        </View>
+                        <View style={{alignItems:'center',width:'33%',height:'50%'}}>
+                            <TouchableOpacity>
+                                <Image source={require('../Assets/home_menu_5.png')} style={{width:wp('14.93'),height:wp('14.93'),marginBottom:wp('2')}} resizeMode='contain'/>
+                            </TouchableOpacity>
+                            <Text style={{fontSize:wp('2.6'),color:'#5a5a5a',fontWeight:'bold'}}>
+                                BERI NILAI
+                            </Text>
+                        </View>
+                        <View style={{alignItems:'center',width:'33%',height:'50%'}}>
+                            <TouchableOpacity>
+                                <Image source={require('../Assets/home_menu_6.png')} style={{width:wp('14.93'),height:wp('14.93'),marginBottom:wp('2')}} resizeMode='contain'/>
+                            </TouchableOpacity>
+                            <Text style={{fontSize:wp('2.6'),color:'#5a5a5a',fontWeight:'bold'}}>
+                                PENGATURAN
+                            </Text>
+                        </View>
+                    </View>
                 </View>
 
                 {/* slider banner wrapper*/}
                 <View style={{ backgroundColor: 'white', paddingVertical: wp('3.46'), paddingHorizontal: wp('4.53'), marginBottom: wp('6.13') }}>
-                    {/* <View style={{backgroundColor:'green',height:wp('27.46'),marginBottom:wp('2.66')}}></View> */}
                     <Image source={require('../Assets/home_banner_slider.png')} style={{ height: wp('27.46'), width: '100%', marginBottom: wp('2.66'), borderRadius: wp('2.4') }} resizeMode='cover' />
 
                     <View style={{ backgroundColor: 'blue', height: wp('1.86') }}></View>
                 </View>
 
-                {news.map((s,i) => {
-                    return(
-                        <View key={i} style={{ paddingVertical: wp('4.53'), paddingHorizontal: wp('4.53'), backgroundColor: 'white' }}>
-                            {/* image */}
-                            <Image source={{uri: s[1].urlToImage}} style={{ backgroundColor: 'grey', height: wp('40.53'), marginBottom: wp('3.73'),borderRadius: wp('2.4') }}/>
-                            {/* content wrapper */}
-                            <View style={{ paddingHorizontal: wp('4.26') }}>
-                                {/* title */}
-                                <Text style={{ fontSize: wp('4.8'), marginBottom: wp('2.93'), color: '#5a5a5a', fontWeight: 'bold' }}>
-                                    {s[1].title}
-                                </Text>
-                                {/* time label */}
-                                <Text style={{ fontSize: wp('2.66'), color: '#aaaaaa', marginBottom: wp('2.93') }}>
-                                    Sumber : detikHealth
-                                    {'\n'}
-                                    {/* {s[1]} */}
-                                </Text>
-                                {/* desc content */}
-                                <Text style={{ fontSize: wp('2.66'), color: '#5a5a5a', marginBottom: wp('2.4') }}>
-                                    {s[1].description}
-                                </Text>
-                                {/* more button */}
-                                <TouchableOpacity>
-                                    <Text style={{ fontSize: wp('2.66'), color: '#0093dd' }}>
-                                        Baca Selengkapnya...
-                                    </Text>
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-                    )
-                })}
+                {news.map((s,i) => NewsItem(s[1],i,navigation))}
 
             </ScrollView>
 

@@ -14,6 +14,7 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {HomeScreen} from './Screens/HomeScreen';
+import {DetailScreen} from './Screens/DetailScreen';
 
 const Stack = createStackNavigator();
 
@@ -24,11 +25,19 @@ function StackNav() {
         name="Home" 
         component={HomeScreen} 
         options={{headerShown:false }}/>
-      {/* <Stack.Screen name="Detai" component={DetailScreen} /> */}
+      <Stack.Screen 
+        name="Detail" 
+        component={DetailScreen}
+        options={{
+          title:'Berita',
+          headerStyle: {
+            backgroundColor: '#0093DD',
+          },
+          headerTintColor: '#fff',
+         }} />
     </Stack.Navigator>
   );
 }
-
 
 export default function App() {
   return (
