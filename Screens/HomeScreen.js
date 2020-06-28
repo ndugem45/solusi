@@ -20,6 +20,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import {NewsItem} from '../Components/NewsItem';
 import { SliderBox } from "react-native-image-slider-box";
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
 
 
@@ -76,7 +77,46 @@ export function HomeScreen({ navigation }) {
                             INFO ANTRIAN
                         </Text>
                         <View style={{flex:1,flexDirection:'row'}}>
-                            <View style={{flex:3}}></View>
+                            {/* progress */}
+                            <View style={{flex:3,flexDirection:'row',alignItems:'center',paddingHorizontal:wp('5.6')}}>
+                                <View style={{alignItems:'center',marginRight:wp('3.2')}}>
+                                    <AnimatedCircularProgress
+                                        size={wp('18.66')}
+                                        width={wp('1')}
+                                        fill={90}
+                                        tintColor="#FFF9AA"
+                                        rotation={350}
+                                        backgroundColor="traspanrent">
+                                            {() => (
+                                                <Text style={{fontSize:wp('6.66'),color:'white'}}>
+                                                    21
+                                                </Text>
+                                            )}
+                                    </AnimatedCircularProgress>
+                                    <Text style={{fontSize:wp('2.4'),color:'white'}}>
+                                        Nomor antrian
+                                    </Text>
+                                </View>
+                                <View style={{alignItems:'center'}}>
+                                <AnimatedCircularProgress
+                                        size={wp('18.66')}
+                                        width={wp('1')}
+                                        fill={90}
+                                        rotation={160}
+                                        tintColor="#FFF9AA"
+                                        backgroundColor="traspanrent">
+                                            {() => (
+                                                <Text style={{fontSize:wp('6.66'),color:'white'}}>
+                                                    5
+                                                </Text>
+                                            )}
+                                    </AnimatedCircularProgress>
+                                    <Text style={{fontSize:wp('2.4'),color:'white'}}>
+                                        Sisa antrian
+                                    </Text>
+                                </View>
+                            </View>
+                            {/* label */}
                             <View style={{flex:2,justifyContent:'center'}}>
                                 <Text style={{fontSize:wp('2.4'),marginBottom:wp('4'),color:'#FFF9AA'}}>
                                     Dokter anda
