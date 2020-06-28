@@ -93,7 +93,7 @@ export function HomeScreen({ navigation }) {
                                                 </Text>
                                             )}
                                     </AnimatedCircularProgress>
-                                    <Text style={{fontSize:wp('2.4'),color:'white'}}>
+                                    <Text style={{fontSize:wp('2.4'),color:'white',marginTop:wp('1')}}>
                                         Nomor antrian
                                     </Text>
                                 </View>
@@ -111,7 +111,7 @@ export function HomeScreen({ navigation }) {
                                                 </Text>
                                             )}
                                     </AnimatedCircularProgress>
-                                    <Text style={{fontSize:wp('2.4'),color:'white'}}>
+                                    <Text style={{fontSize:wp('2.4'),color:'white',marginTop:wp('1')}}>
                                         Sisa antrian
                                     </Text>
                                 </View>
